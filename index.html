@@ -35,7 +35,7 @@
             <div class="col-md-4 ">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentWithdraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4 ">
@@ -89,16 +89,6 @@
            updateSpanTag("currentDeposit", depositNumber);
            updateSpanTag("currentBalance",depositNumber);
            
-        //    const currentDeposit = document.getElementById("currentDeposit").innerText;
-        //    const currentDepositNumber = parseFloat(currentDeposit);
-        //    const totalDeposit = depositNumber+ currentDepositNumber;
-        //    document.getElementById("currentDeposit").innerText = totalDeposit;
-           
-
-        //    const currentBalance = document.getElementById("currentBalance").innerText;
-        //    const currentBalanceNumber = parseFloat(currentBalance);
-        //    const totalBalance = depositNumber + currentBalanceNumber;
-        //    document.getElementById("currentBalance").innerText = totalBalance;
 
            document.getElementById("depositAmount").value = "";
         })
@@ -108,7 +98,13 @@
            withdrawBtn.addEventListener("click",function(){
             
             const withdrawNumber = getInputNumber("withdrawAmount");
+
+            updateSpanTag("currentWithdraw", withdrawNumber);
+            updateSpanTag("currentBalance",-1* withdrawNumber);
+
+            document.getElementById("withdrawAmount").value = "";
            })
+
 
            function getInputNumber(id){
                const amount = document.getElementById(id).value;
