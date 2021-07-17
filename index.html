@@ -86,11 +86,15 @@
         //    const depositNumber = parseFloat(depositAmount);
               const depositNumber = getInputNumber("depositAmount");
 
-           updateSpanTag("currentDeposit", depositNumber);
-           updateSpanTag("currentBalance",depositNumber);
-           
-
-           document.getElementById("depositAmount").value = "";
+              if(depositNumber < 0){
+                  alert("Deposit Number can not be negative.")
+              }
+              else{
+                updateSpanTag("currentDeposit", depositNumber);
+                updateSpanTag("currentBalance",depositNumber);
+                
+               }
+               document.getElementById("depositAmount").value = "";
         })
 
         //withdraw button event handler
